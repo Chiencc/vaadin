@@ -1,0 +1,71 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: WhiteSource@21
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
+    projectName: 'Vaadin-AZDO'
+    configuration: |
+      maven.runPreStep=true
+      maven.ignoreSourceFiles=true
+      maven.ignoreMvnTreeErrors=true
+      maven.aggregateModules=true
+      gradle.ignoreSourceFiles=true
+      gradle.runPreStep=true
+      gradle.aggregateModules=true
+      npm.includeDevDependencies=false
+      npm.runPreStep=true
+      npm.ignoreNpmLsErrors=true
+      npm.yarnProject=false
+      npm.identifyByNameAndVersion=false
+      npm.resolveLockFile=true
+      bower.runPreStep=true
+      bower.ignoreSourceFiles=true
+      nuget.runPreStep=true
+      nuget.resolvePackagesConfigFiles=true
+      nuget.resolveCsProjFiles=true
+      nuget.ignoreSourceFiles=true
+      nuget.resolveNuspecFiles=True
+      paket.runPreStep=true
+      paket.ignoreSourceFiles=true
+      python.ignorePipInstallErrors=true
+      python.installVirtualenv=true
+      python.resolveSetupPyFiles=true
+      python.runPipenvPreStep=true
+      python.pipenvDevDependencies=true
+      python.IgnorePipenvInstallErrors=true
+      python.runPoetryPreStep=true
+      go.collectDependenciesAtRuntime=true
+      go.ignoreSourceFiles=true
+      sbt.runPreStep=true
+      r.runPreStep=true
+      r.cranMirrorUrl=https=//cloud.r-project.org/
+      php.runPreStep=true
+      php.includeDevDependencies=true
+      ruby.installMissingGems=true
+      ruby.runBundleInstall=true
+      cocoapods.runPreStep=true
+      hex.runPreStep=true
+      haskell.runPreStep=true
+      haskell.ignorePreStepErrors=true
+      includes=**/*.*
+      excludes=**/*sources.jar **/*javadoc.jar /tests/
+      archiveExtractionDepth=2
+      archiveIncludes=**/*war **/*ear **/*zip **/*whl **/*tar.gz **/*tgz **/*tar **/*car
+      archiveExcludes=**/*sources.jar **/*javadoc.jar /tests/
