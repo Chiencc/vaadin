@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  "remediateSettings": {
+    "enableRenovate": true,
+    "extends": ["config:base"]
+  }
 }
