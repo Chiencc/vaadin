@@ -116,6 +116,6 @@
     "webpack": "4.42.0",
     "chokidar": "^3.5.0",
     "webpack-merge": "4.2.2",
-    "webpack-dev-server": "3.11.0"
+    "webpack-dev-server": "3.11.2"
   }
 }
